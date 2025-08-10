@@ -2,13 +2,10 @@
 
 class About extends Controller
 {
-    public function index($nama = "Salman", $pekerjaan = "Programmer")
+    public function index()
     {
-        $data = [
-            'page' => 'About me',
-            'nama' => $nama,
-            'pekerjaan' => $pekerjaan,
-        ];
+        $data = $this->model('User_model')->getUser();
+        $data['page'] = "About me";
         $this->view('partials/header', $data);
         $this->view('about/index', $data);
         $this->view('partials/footer');
