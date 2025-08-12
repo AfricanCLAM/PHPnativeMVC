@@ -1,8 +1,8 @@
 <div class="container mt-3">
     <div class="row">
         <div class="col-lg-6">
-            <?php 
-                Flasher::flash();
+            <?php
+            Flasher::flash();
             ?>
         </div>
     </div>
@@ -16,9 +16,12 @@
             <h3>Daftar Mahasiswa</h3>
             <ul class="list-group mb-5">
                 <?php foreach ($data['mhs'] as $mahasiswa) : ?>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <li class="list-group-item">
+                        <a href="<?= BASEURL; ?>mahasiswa/hapus/<?= $mahasiswa['id'] ?>" onclick="return confirm('Yaking ingin Menghapus data?');" class="badge p-2 text-bg-danger text-decoration-none float-end ms-2">
+                            Hapus
+                        </a>
                         <?= $mahasiswa['nama'] ?>
-                        <a href="<?= BASEURL; ?>mahasiswa/detail/<?= $mahasiswa['id'] ?>" class="badge text-bg-primary rounded-pill text-decoration-none">
+                        <a href="<?= BASEURL; ?>mahasiswa/detail/<?= $mahasiswa['id'] ?>" class="badge p-2 text-bg-primary text-decoration-none float-end ms-2">
                             Lihat Detail
                         </a>
                     </li>
