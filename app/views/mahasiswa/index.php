@@ -9,7 +9,7 @@
 
     <div class="row">
         <div class="col-6">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertModal">
+            <button type="button" class="btn btn-primary showCreateModal" data-bs-toggle="modal" data-bs-target="#formModal">
                 tambah Data Mahasiswa
             </button>
             <br><br>
@@ -21,6 +21,9 @@
                             Hapus
                         </a>
                         <?= $mahasiswa['nama'] ?>
+                        <a href="<?= BASEURL; ?>mahasiswa/edit/<?= $mahasiswa['id'] ?>" data-id="<?= $mahasiswa['id'] ?>" class="showEditModal badge p-2 text-bg-success text-decoration-none float-end ms-2" data-bs-toggle="modal" data-bs-target="#formModal">
+                            Edit
+                        </a>
                         <a href="<?= BASEURL; ?>mahasiswa/detail/<?= $mahasiswa['id'] ?>" class="badge p-2 text-bg-primary text-decoration-none float-end ms-2">
                             Lihat Detail
                         </a>
@@ -32,15 +35,16 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="insertModal" tabindex="-1" aria-labelledby="insertModalLabel" aria-hidden="true">
+<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="insertModalLabel">Tambah Data Mahasiswa</h1>
+                <h1 class="modal-title fs-5" id="formModalLabel">Tambah Data Mahasiswa</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="insertForm" action="<?= BASEURL ?>mahasiswa/tambah" method="POST">
+                <form id="Form" action="<?= BASEURL ?>mahasiswa/tambah" method="POST">
+                    <input type="hidden" name="id" id="id">
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
                         <input name="nama" type="text" class="form-control" id="nama">
@@ -51,11 +55,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input name="email" type="email" class="form-control" id="email">
+                        <input name="email" type="email" class="form-control" id="email" autocomplete="email">
                     </div>
                     <div class="mb-3">
                         <label for="jurusan" class="form-label">Jurusan</label>
-                        <select class="form-select" name="jurusan">
+                        <select class="form-select" name="jurusan" id="jurusan">
                             <option value="Teknik Informatika">Teknik Informatika</option>
                             <option value="Sistem Informasi">Sistem Informasi</option>
                             <option value="Teknik Elektro">Teknik Elektro</option>
@@ -72,7 +76,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="submit" form="insertForm" class="btn btn-primary">Tambah Data</button>
+                <button type="submit" form="Form" class="btn btn-primary">Tambah Data</button>
             </div>
         </div>
     </div>
