@@ -32,7 +32,7 @@ class Mahasiswa extends Controller
             exit;
         }
     }
-    
+
     public function hapus($id)
     {
         if ($this->model('Mahasiswa_model')->hapusDataMahasiswa($id) > 0) {
@@ -45,7 +45,7 @@ class Mahasiswa extends Controller
             exit;
         }
     }
-    
+
     public function getubah()
     {
         echo json_encode($this->model('Mahasiswa_model')->getMahasiswaById($_POST['id']));
@@ -63,5 +63,12 @@ class Mahasiswa extends Controller
         }
     }
 
-
+    public function cari()
+    {
+        $data['mhs'] = $this->model('Mahasiswa_model')->cariDataMahasiswa();
+        $data['page'] = 'Daftar Mahasiswa';
+        $this->view('partials/header', $data);
+        $this->view('mahasiswa/index', $data);
+        $this->view('partials/footer',);
+    }
 }
